@@ -10,10 +10,10 @@ echo "[ESTADO DEL ALMACENAMIENTO]" > tmp.txt
 df -h >>  tmp.txt
 echo "" >> tmp.txt
 echo "[USO DE MEMORIA RAM]" >> tmp.txt
-free >> tmp.txt
+free -m >> tmp.txt
 echo "" >> tmp.txt
 echo "[TEMPERATURA RASPI]" >> tmp.txt
-temp >> tmp.txt
+vcgencmd measure_temp >> tmp.txt
 MESSAGE="$(cat tmp.txt)"
 rm rm -f tmp.txt
 sendEmail -f $SOURCE -s smtp.gmail.com:587 \
